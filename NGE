@@ -1,0 +1,24 @@
+class Solution:
+    def nextLargerElement(self, arr):
+        n = len(arr)
+        stack = []
+        ans = []
+
+        for ind in range(n - 1, -1, -1):
+            curEle = arr[ind]
+
+            while stack and stack[-1] <= curEle:
+                stack.pop()
+
+            if not stack:
+                ans.append(-1)
+            else:
+                ans.append(stack[-1])
+
+            stack.append(curEle)   
+
+        return ans[::-1] 
+-------o/p---------------
+Input: arr[] = [1, 3, 2, 4]
+Output: [3, 4, 4, -1]
+Explanation: The next larger element to 1 is 3, 3 is 4, 2 is 4 and for 4, since it doesn't exist, it is -1.
