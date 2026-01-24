@@ -1,0 +1,14 @@
+Class Solution(object):
+    def canJump(self, nums):
+        n=len(nums)
+        maxIndex=0
+        for ind in range(0,n):
+            if(ind>maxIndex):
+                return False
+            maxIndex=max(maxIndex,ind+nums[ind])
+        return True
+o/p:
+nums =
+[2,3,1,1,4]
+Output
+true
