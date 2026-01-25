@@ -1,0 +1,21 @@
+class Solution(object):
+    def asteroidCollision(self, asteroids):
+        n=len(asteroids)
+        stack=[]
+        for ind in range(0,n):
+            if(asteroids[ind]>0):
+                stack.append(asteroids[ind])
+            else:
+                while(len(stack)!=0 and stack[-1]>0 and stack[-1]<abs(asteroids[ind])):
+                    stack.pop()
+                if(len(stack)==0):
+                    stack.append(asteroids[ind])
+                elif(stack[-1]>0 and abs(asteroids[ind])==stack[-1] ):
+                    stack.pop()
+                elif(stack[-1]<0):
+                    stack.append(asteroids[ind])
+        return stack
+----------o/p----------------
+Input: asteroids = [5,10,-5]
+Output: [5,10]
+Explanation: The 10 and -5 collide resulting in 10. The 5 and 10 never collide.
